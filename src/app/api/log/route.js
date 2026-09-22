@@ -7,11 +7,7 @@ export async function POST(req) {
   // 1. HARDWARE API SECURITY CHECK
   const apiKey = req.headers.get('x-api-key');
 
-  if (apiKey !== "your_super_secret_key_123") {
-    return new Response(JSON.stringify({ error: "Unauthorized access" }), { status: 401 });
-  }
-  // This string must perfectly match what you put in your ESP32 code
-  if (apiKey !== "your_super_secret_key_123") {
+  if (apiKey !== process.env.API_SECRET_KEY) {
     return new Response(JSON.stringify({ error: "Unauthorized access" }), { status: 401 });
   }
 
