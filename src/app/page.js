@@ -107,10 +107,13 @@ export default function Dashboard() {
   const totalMembers = members.length;
 
   const handleDateSelect = (e) => {
-    if (e.target.value) {
-      setSelectedDate(e.target.value);
-    }
-  };
+  if (e.target.value) {
+    setSelectedDate(e.target.value);
+     // This is the missing trigger!
+    setShowModal(true);
+     // This is the missing trigger!
+  }
+};
 
   const filteredModalLogs = pairedSessions.filter(session => session.date === selectedDate);
 
